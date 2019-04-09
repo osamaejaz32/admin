@@ -1,0 +1,128 @@
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-header card-header-danger">
+                      <h4 class="card-title">Add Event</h4>
+                  </div>
+                  <div class="card-header" *ngIf="!uploaded">
+                    <file-drop dropZoneLabel="Drop files here" (onFileDrop)="dropped($event)" 
+                    (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)">
+                    </file-drop>
+                  </div>
+                  <div class="card-header" *ngIf="!uploaded">
+                    <img [src]="image">
+                        <!-- <span>Drop Banner Image Here</span> -->
+                  </div>
+                  <div class="card-body">
+                      <form [formGroup]="eventForm" (ngSubmit)="saveEvent()">
+                          <div class="row">
+                              <div class="col-md-12">
+                                <mat-form-field class="example-full-width">
+                                  <input matInput formControlName="event_title" placeholder="Event Title" type="text">
+                                </mat-form-field>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-md-12">
+                                <mat-form-field class="example-full-width">
+                                  <input matInput formControlName="event_venue" placeholder="Event Venue" type="text">
+                                </mat-form-field>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-md-6">
+                                <mat-form-field class="example-full-width">
+                                  <input matInput formControlName="event_start_date" placeholder="Start Date" type="date">
+                                </mat-form-field>
+                              </div>
+                              <div class="col-md-6">
+                                <mat-form-field class="example-full-width">
+                                  <input matInput formControlName="event_end_date" placeholder="End Date" type="date">
+                                </mat-form-field>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-md-6">
+                                <ngb-timepicker formControlName="event_start_time"></ngb-timepicker>
+                              </div>
+                              <div class="col-md-6">
+                                <ngb-timepicker formControlName="event_end_time"></ngb-timepicker>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-md-12">
+                                <label>Speakers</label>
+                                <mat-form-field class="example-full-width">
+                                   <textarea matInput formControlName="event_speakers" placeholder="Please mention about the speaker if any"></textarea>
+                                 </mat-form-field>
+                              </div>
+                              <!-- <div class="col-md-6">
+                                <label>Product Details</label>
+                                <mat-form-field class="example-full-width">
+                                  <mat-label>Category</mat-label>
+                                   <mat-select>
+                                    <mat-option *ngFor="let food of categories" [value]="food.id">
+                                      {{food.cat_name}}
+                                    </mat-option>
+                                  </mat-select>
+                                 </mat-form-field>
+                              </div> -->
+                          </div>
+                          <div class="row">
+                              <div class="col-md-12">
+                                <mat-form-field class="example-full-width">
+                                   <input matInput formControlName="event_fee" placeholder="Event Fees" type="text">
+                                 </mat-form-field>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-md-12">
+                                <label>Contact Info</label>
+                                <mat-form-field class="example-full-width">
+                                   <textarea matInput formControlName="event_contact_info" [placeholder]="eventPlaceHolder"></textarea>
+                                 </mat-form-field>
+                              </div>
+                          </div>
+                          <div class="row" *ngIf="imageIsUploaded == null">
+                              <div class="col-md-6">
+                              		<mat-checkbox matInput class="example-margin" formControlName="show_uninvited">Hide from uninvited Members</mat-checkbox>
+                              </div>
+                              <div class="col-md-6">
+                                  <mat-checkbox matInput class="example-margin" formControlName="allow_non_members">Allow Non-Members</mat-checkbox>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-md-6">
+                                <mat-form-field class="example-full-width">
+                                  <input matInput formControlName="last_data_confirm" placeholder="Last Date Of Confirmation" type="date">
+                                </mat-form-field>
+                              </div>
+                              <div class="col-md-6">
+                                <mat-form-field class="example-full-width">
+                                  <input matInput formControlName="last_date_cancel" placeholder="Last Date of Withrawal" type="date">
+                                </mat-form-field>
+                              </div>
+                          </div>
+                          <!-- <div class="row" *ngIf="imageIsUploaded == null">
+                              <div class="col-md-12">
+                                <input type="file" ng2FileSelect [uploader]="uploader"  (change)="handleFileSelect($event)" multiple />
+                              </div>
+                          </div>
+                          <div class="row" *ngIf="imageIsUploaded != null">
+                              <div class="col-md-3">
+                                <img [src]="imageIsUploaded" style="height: 100px;width: 100px;border-radius: 50%;">
+                              </div>
+                          </div> -->
+                          <button mat-raised-button type="submit" [disabled]="!eventForm.valid" class="btn btn-danger pull-right">Save</button>
+                          <div class="clearfix"></div>
+                      </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+

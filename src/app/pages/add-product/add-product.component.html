@@ -1,0 +1,75 @@
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-header card-header-danger">
+                      <h4 class="card-title">Add Product</h4>
+                      <!-- <p class="card-category">Complete your profile</p> -->
+                  </div>
+                  <div class="card-body">
+                      <form [formGroup]="productForm" (ngSubmit)="saveProduct()">
+                          <div class="row">
+                              <div class="col-md-6">
+                                <mat-form-field class="example-full-width">
+                                  <input matInput formControlName="product_name" placeholder="Product Name" type="text">
+                                </mat-form-field>
+                              </div>
+                              <div class="col-md-6">
+                                <mat-form-field class="example-full-width">
+                                  <input matInput formControlName="manufactured_by" placeholder="Manufactured By" type="text">
+                                </mat-form-field>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-md-6">
+                                <mat-form-field class="example-full-width">
+                                  <input matInput formControlName="product_price" placeholder="Price" type="text">
+                                </mat-form-field>
+                              </div>
+                              <div class="col-md-6">
+                                <mat-form-field class="example-full-width">
+                                  <input matInput formControlName="product_quantity" placeholder="Quatity In Stock" type="text">
+                                </mat-form-field>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-md-12">
+                                <label>Product Details</label>
+                                <mat-form-field class="example-full-width">
+                                   <textarea matInput formControlName="product_details" placeholder="Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo."></textarea>
+                                 </mat-form-field>
+                              </div>
+                              <!-- <div class="col-md-6">
+                                <label>Product Details</label>
+                                <mat-form-field class="example-full-width">
+                                  <mat-label>Category</mat-label>
+                                   <mat-select>
+                                    <mat-option *ngFor="let food of categories" [value]="food.id">
+                                      {{food.cat_name}}
+                                    </mat-option>
+                                  </mat-select>
+                                 </mat-form-field>
+                              </div> -->
+                          </div>
+                          <div class="row" *ngIf="imageIsUploaded == null">
+                              <div class="col-md-12">
+                                <input type="file" ng2FileSelect [uploader]="uploader"  (change)="handleFileSelect($event)" multiple />
+                              </div>
+                          </div>
+                          <div class="row" *ngIf="imageIsUploaded != null">
+                              <div class="col-md-3">
+                                <img [src]="imageIsUploaded" style="height: 100px;width: 100px;border-radius: 50%;">
+                              </div>
+                          </div>
+                          <button mat-raised-button type="submit" [disabled]="!productForm.valid" class="btn btn-danger pull-right">Save</button>
+                          <div class="clearfix"></div>
+                      </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+

@@ -1,0 +1,66 @@
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-header card-header-danger">
+                      <h4 class="card-title ">Products</h4>
+                      <!-- <p class="card-category"> Here is a subtitle for this table</p> -->
+                  </div>
+                  <div class="card-body">
+                      <div class="table-responsive">
+                          <table class="table">
+                              <thead class=" text-primary">
+                                  <th>
+                                      Image
+                                  </th>
+                                  <th>
+                                      Name
+                                  </th>
+                                  <th>
+                                      Company
+                                  </th>
+                                  <th>
+                                      Quantity
+                                  </th>
+                                  <th>
+                                      Price
+                                  </th>
+                                  <th>
+                                      Actions
+                                  </th>
+                              </thead>
+                              <tbody cdkDropList (cdkDropListDropped)="drop($event)">
+                                  <tr *ngFor="let product of produts;let i=$index;" cdkDrag>
+                                      <td>
+                                         <img [src]="product?.filename" style="width: 80px;height: 80px;border-radius: 50%;">
+                                      </td>
+                                      <td>
+                                          {{product?.product_name}}
+                                      </td>
+                                      <td>
+                                          {{product?.manufactured_by}}
+                                      </td>
+                                      <td>
+                                          {{product?.product_quantity}}
+                                      </td>
+                                      <td class="text-primary">
+                                          {{product?.product_price}}
+                                      </td>
+                                      <td class="text-danger">
+                                          <i class="material-icons" (click)="editProduct(product)">create</i>&nbsp;
+                                          <i class="material-icons" (click)="deleteProduct(product)">delete</i>
+                                      </td>
+                                  </tr>
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="row" style="float: right;">
+            <ngb-pagination [collectionSize]="70" [(page)]="page" [boundaryLinks]="true"></ngb-pagination>
+          </div>
+  </div>
+</div>
